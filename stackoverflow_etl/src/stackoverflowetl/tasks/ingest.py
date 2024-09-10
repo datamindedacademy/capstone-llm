@@ -50,7 +50,6 @@ def upload_body_s3(response_json, s3_client, s3_key):
         filename,
         f"{llm_bucket}",
         s3_key,
-        ExtraArgs={'ServerSideEncryption': 'aws:kms', 'SSEKMSKeyId': 'arn:aws:kms:us-east-1:338791806049:alias/capstone_llm'}
     )
 
 
@@ -73,12 +72,6 @@ def ingest(tags: List[str]):
 
 def main():
     parser = argparse.ArgumentParser(description="stackoverflow ingest")
-    parser.add_argument(
-        "-d", "--date", dest="date", help="date in format YYYY-mm-dd", required=True
-    )
-    parser.add_argument(
-        "-e", "--env", dest="env", help="environment we are executing in", required=True
-    )
     parser.add_argument(
         "-t", "--tags", dest="tags", help="comma seperated list if stackoverflow tasks to process",
         default="python-polars,sql,dbt,airflow,apache-spark,docker,pyspark", required=False
