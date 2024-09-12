@@ -99,7 +99,9 @@ As you know have working python code. We now want to make sure this is triggered
 We start with a local installation of Airflow, you can use the `docker-compose.yml` file, similar to the setup used in the Airflow session.
 
 ### Your task
-- package the python code in a Dockerfile. If you used the provided scaffolding, this should be easy. Take a look at the Dockerfile and make sure you understand everything
+- package the python code in a Dockerfile. If you used the provided scaffolding, this should be easy. Take a look at the Dockerfile and make sure you understand everything.
+  - If you run the container using python ... as command, you will need to add pyspark to your dependencies
+  - if you run the container user spark-submit ... as a command you do not: `/opt/spark/bin/spark-submit --master local[*] --deploy-mode client local:///opt/spark/work-dir/src/capstonellm/tasks/clean.py -e dev` 
 - create an Airflow dag with one task (clean) that will run your clean job using the [DockerOperator](https://airflow.apache.org/docs/apache-airflow/1.10.9/_api/airflow/operators/docker_operator/index.html).
   In order to access s3, you will have to pass your credentials to the docker container.
 
