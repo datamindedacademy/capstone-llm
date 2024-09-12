@@ -1,13 +1,43 @@
 import argparse
 import logging
+
+from pyspark.sql.dataframe import DataFrame
+import pyspark.sql.functions as f
 from pyspark.sql import SparkSession
 
+from capstonellm.common.catalog import llm_bucket
 from capstonellm.common.spark import ClosableSparkSession
 
 logger = logging.getLogger(__name__)
 
+
 def clean(spark: SparkSession, environment: str, tag: str):
-    pass
+    questions = spark.read.json(f"s3a://{llm_bucket}/input/{tag}/questions.json")
+
+    df = questions.withColumn("question", f.explode("items"))
+    df = df.select("question.*")
+    df = df.select("question_id", "body", "title", "link").withColumnRenamed(
+        "body", "question"
+    )
+    df.show()
+
+    answers = spark.read.json(f"s3a://{llm_bucket}/input/{tag}/answers.json")
+
+    dfa = answers.withColumn("answer", f.explode("items"))
+    dfa = dfa.select("answer.*")
+    dfa = dfa.select("question_id", "answer_id", "body").withColumnRenamed(
+        "body", "answer"
+    )
+
+    joined = df.join(dfa, "question_id")
+    joined = joined.withColumn("question_id", f.col("question_id").cast("string"))
+    joined = joined.withColumn("answer_id", f.col("answer_id").cast("string"))
+
+    count = joined.count()
+    joined.repartition(count).write.mode("overwrite").json(
+        f"s3a://{llm_bucket}/cleaned/{tag}/"
+    )
+
 
 def main():
     parser = argparse.ArgumentParser(description="capstone_llm")
@@ -15,8 +45,12 @@ def main():
         "-e", "--env", dest="env", help="environment we are executing in", required=True
     )
     parser.add_argument(
-        "-t", "--tag", dest="tag", help="the tag to process",
-        default="python-polars", required=False
+        "-t",
+        "--tag",
+        dest="tag",
+        help="the tag to process",
+        default="python-polars",
+        required=False,
     )
     logger.info("starting the cleaning job")
 
@@ -33,7 +67,9 @@ def main():
         )
         clean(session, args.env, args.tag)
     else:
-        with ClosableSparkSession("capstone_llm", spark_config=common_spark_config) as session:
+        with ClosableSparkSession(
+            "capstone_llm", spark_config=common_spark_config
+        ) as session:
             clean(session, args.env, args.tag)
 
 
