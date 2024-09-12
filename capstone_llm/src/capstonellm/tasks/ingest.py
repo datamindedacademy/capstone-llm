@@ -1,11 +1,13 @@
 import argparse
-from typing import List
-
+from pyspark.sql import SparkSession
 import logging
 logger = logging.getLogger(__name__)
 
 def ingest(tag: str):
-    pass
+    spark = SparkSession.builder.getOrCreate()
+    qs_df = spark.read.json("/workspace/capstone-llm/questions.json")
+    qs_l = qs_df.select("items").collect()[0][0]
+
 
 def main():
     parser = argparse.ArgumentParser(description="stackoverflow ingest")
