@@ -1,12 +1,10 @@
 import argparse
-from pyspark.sql import SparkSession
 import logging
 logger = logging.getLogger(__name__)
 
 def ingest(tag: str):
-    spark = SparkSession.builder.getOrCreate()
-    qs_df = spark.read.json("/workspace/capstone-llm/questions.json")
-    qs_l = qs_df.select("items").collect()[0][0]
+    pass
+
 
 
 def main():
