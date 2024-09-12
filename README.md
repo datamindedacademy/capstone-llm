@@ -16,7 +16,7 @@ If this is going well, we will run it on a cloud platform, called [Conveyor](htt
 To get started We've set up a Gitpod environment containing all the tools required to complete this exercise (awscli, python, vscode, ...). 
 You can access this environment by clicking the button below:
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/datamindedacademy/capstone-llm)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/SamrtCookie/capstone-llm)
 
 NOTE: When you fork the code repo to your own remote make sure to change the Gitpod URL to reflect your account in this README!
 
