@@ -34,9 +34,8 @@ def clean(spark: SparkSession, environment: str, tag: str):
     joined = joined.withColumn("question_id", f.col("question_id").cast("string"))
     joined = joined.withColumn("answer_id", f.col("answer_id").cast("string"))
 
-    concatenated = joined.select(f.concat(*joined.columns).alias("data"))
-    count = concatenated.count()
-    concatenated.repartition(count).write.mode("overwrite").text(
+    count = joined.count()
+    joined.repartition(count).write.mode("overwrite").json(
         f"s3a://{llm_bucket}/cleaned/{tag}/"
     )
 
