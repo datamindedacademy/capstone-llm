@@ -1,11 +1,11 @@
 import argparse
-from typing import List
-
 import logging
 logger = logging.getLogger(__name__)
 
 def ingest(tag: str):
     pass
+
+
 
 def main():
     parser = argparse.ArgumentParser(description="stackoverflow ingest")

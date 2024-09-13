@@ -1,0 +1,15 @@
+docker:
+    path: .
+id: bbc60685-7f80-4d7f-a9ce-967fdb43f317
+ide:
+    filename: ide.yaml
+name: capstone-smart_clean
+resources:
+    path: resources
+streaming:
+    filename: streaming.yaml
+template: ""
+version: "0.3"
+workflows:
+    path: dags
+    version: "2"
