@@ -32,16 +32,15 @@ ingest_task = ConveyorContainerOperatorV2(
     arguments=[],
 )
 
-clean_task = ConveyorSparkSubmitOperatorV2(
+clean_task = ConveyorContainerOperatorV2(
     dag=dag,
     task_id="clean",
     num_executors="1",
-    driver_instance_type="mx.small",
-    executor_instance_type="mx.small",
+    instance_type="mx.medium",
     aws_role="capstone_conveyor_llm",
     spark_main_version=3,
-    application="local:///opt/spark/work-dir/src/stackoverflowetl/tasks/clean.py",
-    application_args=["--env", "{{ macros.conveyor.env() }}"],
+    cmds=["python3", "-m", "stackoverflowetl.tasks.clean"],
+    arguments=["-e", "{{ macros.conveyor.env() }}"]
 )
 
 ingest_task >> clean_task
