@@ -1,9 +1,9 @@
 from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.bash import BashOperator
-from airflow.providers.docker.operators.docker import DockerOperator
 from airflow.operators.empty import EmptyOperator
-import os
+from conveyor.operators import ConveyorContainerOperatorV2
+
 
 default_args = {
     "owner": "airflow",
@@ -28,20 +28,25 @@ with DAG(
 
     t1 = BashOperator(task_id="print_current_date", bash_command="date")
 
-    t2 = DockerOperator(
+    # t2 = DockerOperator(
+    #     task_id="clean_data",
+    #     image="clean:latest",
+    #     container_name="cleaner",
+    #     api_version="auto",
+    #     auto_remove=True,
+    #     environment={
+    #     "AWS_ACCESS_KEY_ID": os.getenv("AWS_ACCESS_KEY_ID"),
+    #     "AWS_SECRET_ACCESS_KEY": os.getenv("AWS_SECRET_ACCESS_KEY"),
+    #     "AWS_SESSION_TOKEN": os.getenv("AWS_SESSION_TOKEN")
+    #                 },
+    #     command = "python3 -m capstonellm.tasks.clean --env prod",
+    #     docker_url="unix://var/run/docker.sock",
+    #     network_mode="bridge",
+    # )
+    t2 = ConveyorContainerOperatorV2(
         task_id="clean_data",
-        image="clean:latest",
-        container_name="cleaner",
-        api_version="auto",
-        auto_remove=True,
-        environment={
-        "AWS_ACCESS_KEY_ID": os.getenv("AWS_ACCESS_KEY_ID"),
-        "AWS_SECRET_ACCESS_KEY": os.getenv("AWS_SECRET_ACCESS_KEY"),
-        "AWS_SESSION_TOKEN": os.getenv("AWS_SESSION_TOKEN")
-                    },
-        command = "python3 -m capstonellm.tasks.clean --env prod",
-        docker_url="unix://var/run/docker.sock",
-        network_mode="bridge",
+        aws_role="capstone_conveyor_llm",
+        instance_type='mx.micro',
     )
 
     t4 = BashOperator(task_id="print_hello", bash_command='echo "hello world"')
