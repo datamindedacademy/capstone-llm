@@ -8,7 +8,6 @@
   },
   "remoteUser": "vscode",
   "containerUser": "vscode",
-  "postCreateCommand": "bash -c 'mkdir -p /workspace/capstone-llm/{logs,plugins} && chmod -R 777 /workspace/capstone-llm/logs && chmod -R 777 /workspace/capstone-llm/plugins'",
   "postStartCommand": {"uv": "uv sync --frozen", "acl": "sudo setfacl -m d:other:rwx /tmp"},
   "workspaceFolder": "/workspace/capstone-llm",
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace/capstone-llm,type=bind",
