@@ -18,7 +18,7 @@ You can access this environment by clicking the button below:
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/datamindedacademy/capstone-llm)
 
-NOTE: When you fork the code repo to your own remote make sure to change the GitHub Codespaces URL to reflect your account in this README!
+> **_NOTE:_** When you fork the code repo to your own remote make sure to change the GitHub Codespaces URL to reflect your account in this README!
 
 ## GitHub Codespaces environment
 
@@ -132,7 +132,7 @@ We start with a local installation of Airflow, you can use the `docker-compose.y
 
 ## Task 3: Ingest the stackoverflow data
 
-NOTE: This is an optional task, if you still have time.
+> **_NOTE:_** This is an optional task, if you still have time.
 
 The goal here is to create the input data yourself instead of relying on the data that we have provided.
 In order to do this you will have to investigate the [Stackoverflow API](https://api.stackexchange.com/docs).
