@@ -5,10 +5,7 @@ USER root
 # Install uv
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
-# Remove Yarn repo with expired GPG key
-RUN rm -f /etc/apt/sources.list.d/yarn.list
-
-# Install Java 11 and ACL
+# Install Java 17 and ACL
 RUN apt-get update && apt-get install -y openjdk-17-jdk acl
 
 # Install Conveyor
