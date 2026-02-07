@@ -1,4 +1,4 @@
-FROM public.ecr.aws/dataminded/spark-k8s-glue:v3.5.4-hadoop-3.3.6-v1
+FROM public.ecr.aws/dataminded/v4.0.1-hadoop-3.4.2-v4
 
 USER 0
 ENV PYSPARK_PYTHON python3
