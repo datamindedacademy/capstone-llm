@@ -7,7 +7,7 @@ requires-python = ">=3.10"
 dependencies = [
     "boto3>=1.36.9",
     "pyspark>=4.0.1",
-    "pytest>=8.3.4",
+    "pytest>=9.0.3",
     "requests>=2.33.0",
 ]
 
