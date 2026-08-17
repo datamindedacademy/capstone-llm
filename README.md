@@ -16,6 +16,7 @@ If this is going well, we will run it on a cloud platform, called [Conveyor](htt
 To get started We've set up a GitHub Codespaces environment containing all the tools required to complete this exercise (awscli, python, vscode, ...).
 You can access this environment by clicking the button below:
 
+[![Dataminded Academy](https://raw.githubusercontent.com/datamindedacademy/branding/main/assets/badge.svg)](https://github.com/datamindedacademy)
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/datamindedacademy/capstone-llm)
 
 > **_NOTE:_** When you fork the code repo to your own remote make sure to change the GitHub Codespaces URL to reflect your account in this README!
