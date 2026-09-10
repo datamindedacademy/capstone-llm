@@ -114,7 +114,7 @@ The following commands are assumed to run in the root of your project.
   - install the dependencies in your virtual environment using `uv sync`
 - 2 places to write your transformation logic:
   - clean.py: your pyspark cleaning code
-  - ingest.py: see task 3bis (only if you have time left)
+  - ingest.py: see Task 3 (only if you have time left)
 - run the tasks
   - install the project in your venv directory as follows: `uv pip install -e .`
   - run a task: `uv run python3 -m capstonellm.tasks.clean` or `uv run python3 -m capstonellm.tasks.ingest`
