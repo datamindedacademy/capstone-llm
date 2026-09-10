@@ -1,5 +1,7 @@
 # Dataminded Capstone LLM
 
+[![Dataminded Academy](https://raw.githubusercontent.com/datamindedacademy/branding/main/assets/badge.svg)](https://github.com/datamindedacademy)
+
 Welcome to the Capstone project! Everything you've learned over the past days will now be integrated in a realistic data pipeline.
 The training wheels are off, but we're still at the sideline, cheering you on and supporting you when needed.
 
