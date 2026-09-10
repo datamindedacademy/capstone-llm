@@ -62,7 +62,7 @@ def validate_quota(response_json: dict):
 
 
 def ingest(tags: List[str]):
-    s3_client = boto3.client("s3", region_name="us-east-1")
+    s3_client = boto3.client("s3", region_name="eu-west-1")
     for tag in tags:
         ingest_tag(s3_client, tag)
 
