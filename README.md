@@ -17,11 +17,14 @@ You will start by building the code for the ingestion pipeline locally and sched
 If this is going well, we will run it on a cloud platform, called [Conveyor](https://conveyordata.com/).
 
 To get started, we've set up a GitHub Codespaces environment containing all the tools required to complete this exercise (awscli, python, vscode, ...).
-You can access this environment by clicking the button below:
+
+We recommend that you:
+* Fork this repository to your own GitHub account by clicking the `Fork` button in the top right corner of this page.
+* Edit the `README.md` by clicking the pencil icon on the top right of its rendering. Change the GitHub Codespaces URL, swapping `datamindedacademy` for your own Github username.
+* Commit changes by clicking the green button
+* Finally, click the button to "Open in GitHub workspaces":
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/datamindedacademy/capstone-llm)
-
-> **_NOTE:_** When you fork the code repo to your own remote make sure to change the GitHub Codespaces URL to reflect your account in this README!
 
 ## GitHub Codespaces environment
 
