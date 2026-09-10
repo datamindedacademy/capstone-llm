@@ -62,11 +62,11 @@ root/
 In order to access the necessary data on s3, you will need to configure your AWS credentials.
 You can do this by running `aws configure` and filling in the necessary information.
 We will provide you with individual `access_key_id` and `secret_access_key`.
-Specify as default region `us-east-1`.
+Specify as default region `eu-west-1`.
 
 After this you should be able to successfully run the following command:
 ```bash
-aws s3 ls s3://dataminded-academy-capstone-llm-data-us/input/
+aws s3 ls s3://dataminded-academy-capstone-llm-data/input/
 ```
 
 If this works, you are ready to start the project.
@@ -79,16 +79,16 @@ Our team already ingested questions and answers from StackOverflow for you to us
 We used the [stackoverflow API](https://api.stackexchange.com/docs).
 We ingested different tags, pick one of them as a starting point for cleaning your data.
 
-The input data is stored in the following s3 bucket: `dataminded-academy-capstone-llm-data-us` under path `input/{tag}/`
-The S3 bucket resides in us-east-1 region.
+The input data is stored in the following s3 bucket: `dataminded-academy-capstone-llm-data` under path `input/{tag}/`
+The S3 bucket resides in the eu-west-1 region.
 
 ### Your task
 
 Investigate the data, you can download and inspect the json files. Download them as follows:
 
 ```
-aws s3 ls s3://dataminded-academy-capstone-llm-data-us/input/
-aws s3 cp s3://dataminded-academy-capstone-llm-data-us/input/dbt/questions.json ./
+aws s3 ls s3://dataminded-academy-capstone-llm-data/input/
+aws s3 cp s3://dataminded-academy-capstone-llm-data/input/dbt/questions.json ./
 ```
 
 Start by writing your cleaning transformation by reading/writing local files and only afterwards interact directly with s3.
