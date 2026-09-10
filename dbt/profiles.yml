@@ -1,0 +1,11 @@
+capstone_spike:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: spike.duckdb
+      extensions: [httpfs]
+      secrets:
+        - type: s3
+          provider: credential_chain
+          region: eu-west-1

@@ -10,3 +10,8 @@ plugins
 build
 
 *.egg-info
+# dbt
+dbt/target/
+dbt/logs/
+*.duckdb
+dbt/.user.yml

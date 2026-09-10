@@ -1,0 +1,7 @@
+name: capstone_spike
+version: "0.1"
+profile: capstone_spike
+model-paths: ["models"]
+
+vars:
+  bucket: dataminded-academy-capstone-llm-data
