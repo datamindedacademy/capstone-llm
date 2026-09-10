@@ -53,14 +53,15 @@ def main():
     args = parser.parse_args()
     common_spark_config = {
         "spark.hadoop.fs.s3a.impl": "org.apache.hadoop.fs.s3a.S3AFileSystem",
-        "spark.hadoop.fs.s3a.aws.credentials.provider": "com.amazonaws.auth.DefaultAWSCredentialsProviderChain",
+        "spark.hadoop.fs.s3a.aws.credentials.provider": "software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider",
     }
     if args.env == "local":
-        session = (
-            SparkSession.builder.appName("Spark S3 Integration")
-            .config("spark.jars.packages", "org.apache.hadoop:hadoop-aws:3.4.2")
-            .getOrCreate()
+        builder = SparkSession.builder.appName("Spark S3 Integration").config(
+            "spark.jars.packages", "org.apache.hadoop:hadoop-aws:3.4.2"
         )
+        for key, value in common_spark_config.items():
+            builder = builder.config(key, value)
+        session = builder.getOrCreate()
         clean(session, args.tag)
     else:
         with ClosableSparkSession("stackoverflow_etl", spark_config=common_spark_config) as session:
