@@ -1,7 +1,7 @@
-# Spike: duckdb + dbt
+# Cleaning with duckdb + dbt
 
-Does the Task 1 cleaning job work without PySpark, and in a shape a Bedrock
-knowledge base actually wants? Yes.
+Task 1 without PySpark, writing the shape a Bedrock knowledge base wants.
+Scheduled from Airflow through the DockerOperator, see the root README.
 
 Run it:
 

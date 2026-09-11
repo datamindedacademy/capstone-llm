@@ -1,6 +1,6 @@
-name: capstone_spike
+name: capstone_llm
 version: "0.1"
-profile: capstone_spike
+profile: capstone_llm
 model-paths: ["models"]
 
 vars:

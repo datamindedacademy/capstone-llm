@@ -125,6 +125,21 @@ The following commands are assumed to run in the root of your project.
   - you can check if your task ran correctly by running `pytest tests/test_clean.py`
 
 
+## Run it in local Airflow
+
+```bash
+docker build -t capstone-llm-dbt:latest .
+export AWS_ACCESS_KEY_ID=... AWS_SECRET_ACCESS_KEY=...
+export CAPSTONE_USER=<your name>
+docker compose up -d
+```
+
+Airflow is on http://localhost:8080. Trigger the `capstone_llm` dag, optionally
+with `{"tag": "airflow"}` as the run config. It runs dbt in the image through
+the DockerOperator and writes to `cleaned/$CAPSTONE_USER/{tag}` in the bucket.
+
+Running it without Airflow is in `dbt/README.md`.
+
 ## Task 2: Schedule your task using Airflow
 
 As you now have working python code, we now want to make sure this is triggered using Airflow.

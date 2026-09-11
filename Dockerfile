@@ -1,7 +1,9 @@
-FROM public.ecr.aws/dataminded/spark-k8s-glue:v4.0.1-hadoop-3.4.2-v4
+FROM python:3.11-slim
 
-USER 0
-ENV PYSPARK_PYTHON python3
-WORKDIR /opt/spark/work-dir
+RUN pip install --no-cache-dir dbt-duckdb==1.11.0
 
-#TODO add your project code and dependencies to the image
+COPY dbt/ /app/dbt/
+WORKDIR /app/dbt
+ENV DBT_PROFILES_DIR=/app/dbt
+
+ENTRYPOINT ["dbt"]
