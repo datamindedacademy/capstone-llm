@@ -59,6 +59,10 @@ x-airflow-common:
     AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://airflow:airflow@postgres/airflow
     AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
     AIRFLOW__CORE__EXECUTION_API_SERVER_URL: 'http://airflow-apiserver:8080/execution/'
+    # Public URL where the UI is reached. Must match the address in your browser, otherwise the
+    # login redirect fails with {"detail":"Invalid or unsafe next URL"}.
+    # In GitHub Codespaces this is set to the forwarded-port URL by .devcontainer/codespaces-env.sh.
+    AIRFLOW__API__BASE_URL: ${AIRFLOW__API__BASE_URL:-http://localhost:8080}
     # DAG parsing performance optimizations
     AIRFLOW__DAG_PROCESSOR__PARSING_PROCESSES: '4'
     AIRFLOW__DAG_PROCESSOR__REFRESH_INTERVAL: '10'

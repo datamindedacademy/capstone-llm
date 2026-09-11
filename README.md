@@ -130,6 +130,8 @@ The following commands are assumed to run in the root of your project.
 As you now have working python code, we now want to make sure this is triggered using Airflow.
 We start with a local installation of Airflow, you can use the `docker-compose.yml` file, similar to the setup used in the Airflow session.
 
+Start it with `docker compose up -d` and open the Airflow UI on port 8080 (in Codespaces: the `Ports` tab, port 8080).
+
 ### Your task
 
 - Package the python code in a Dockerfile. If you used the provided scaffolding, this should be easy. Take a look at the Dockerfile and make sure you understand everything

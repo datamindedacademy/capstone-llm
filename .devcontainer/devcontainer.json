@@ -8,7 +8,7 @@
   },
   "remoteUser": "vscode",
   "containerUser": "vscode",
-  "postStartCommand": {"uv": "uv sync --frozen", "acl": "sudo setfacl -m d:other:rwx /tmp"},
+  "postStartCommand": {"uv": "uv sync --frozen", "acl": "sudo setfacl -m d:other:rwx /tmp", "airflow-url": "bash .devcontainer/codespaces-env.sh"},
   "workspaceFolder": "/workspace/capstone-llm",
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace/capstone-llm,type=bind",
   "forwardPorts": [5555, 8080],
