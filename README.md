@@ -81,23 +81,33 @@ If this works, you are ready to start the project.
 
 Our team already ingested questions and answers from StackOverflow for you to use.
 We used the [StackOverflow API](https://api.stackexchange.com/docs).
-We ingested different tags, pick one of them as a starting point for cleaning your data.
+We ingested different tags (`dbt`, `airflow`, `python-spark`,...).
+Pick one of them (e.g. `dbt`) as a starting point for cleaning your data.
 
 The input data is stored in the following s3 bucket: `dataminded-academy-capstone-llm-data` under path `input/{tag}/`
 The S3 bucket resides in the `eu-west-1` region.
 
-### Your task
+### Your task: clean.py
 
-Investigate the data, you can download and inspect the json files. Download them as follows:
+Investigate the data. Look around at the structure on S3:
 
 ```
+aws s3 ls s3://dataminded-academy-capstone-llm-data/
 aws s3 ls s3://dataminded-academy-capstone-llm-data/input/
+aws s3 ls s3://dataminded-academy-capstone-llm-data/input/dbt/
+aws s3 ls s3://dataminded-academy-capstone-llm-data/input/airflow/
+```
+
+You can also download and inspect the json files, e.g. for the `dbt` tag:
+```
 aws s3 cp s3://dataminded-academy-capstone-llm-data/input/dbt/questions.json ./
+aws s3 cp s3://dataminded-academy-capstone-llm-data/input/dbt/answers.json ./
 ```
 
 Start by writing your cleaning transformation by reading/writing local files and only afterwards interact directly with s3.
+If you use the scaffold, you can write your code in `src/capstonellm/tasks/clean.py`.
 
-Given the input data for 1 tag, the goal is to create 1 json document per question containing the title, question body and the response body.
+Given the input data for 1 tag (e.g. `dbt`), the goal is to create 1 json document per question containing at least the title, question body and the response body.
 So your goal is to extract the relevant fields from both the questions and answers and join them together using the `question_id` field.
 
 > **_NOTE:_** When reading from s3, make sure to use `s3a://` prefix.
