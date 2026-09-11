@@ -53,6 +53,8 @@ root/
    |   |-- |-- common/
    |   |-- |-- |-- spark.py
    |   |-- |-- tasks/
+   |   |-- |-- |-- clean.py  <--- this is where you write your cleaning code
+   |   |-- |-- |-- ingest.py
    |-- tests/
    |   |-- common/
    |   |-- | -- spark.py
